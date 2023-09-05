@@ -5,8 +5,8 @@ ifeq ($(detected_OS), Linux)
 	CC = g++
 else
 	CFLAGS = -fPIC -O2 -Wall -undefined dynamic_lookup
-	# CC = clang++
-	CC = g++-13
+	CC = clang++
+	# CC = g++-13
 endif
 
 
@@ -16,11 +16,12 @@ PY_CFLAGS := $(shell python3-config --includes)
 GSL := $(shell pkg-config --cflags --libs gsl)
 SHARE = -shared
 MPFIT = -I ../mpfit/cmpfit-1.3a -L ../mpfit/cmpfit-1.3a -lmpfit
+SWIG = swig -c++ -python
 
 
 objects = component.o function.o compcontainer.o curvefit.o swigDASpec_wrap.o
 
-default : _swigDASpec.so
+default : _swigDASpec.so _carray.so
 
 _swigDASpec.so : $(objects) common.h prototype.h DASpec.h
 	$(CC) -o _swigDASpec.so $(objects) $(MPFIT) $(GSL) $(SHARE) $(PY_CFLAGS) $(CFLAGS)
@@ -40,3 +41,22 @@ curvefit.o : curvefit.cpp curvefit.h common.h
 swigDASpec_wrap.o : swigDASpec_wrap.cxx
 	$(CC) -c swigDASpec_wrap.cxx $(CFLAGS) $(PY_CFLAGS) $(MPFIT)
 
+swigDASpec_wrap.cxx : swigDASpec.i
+	$(SWIG) swigDASpec.i
+
+
+_carray.so : carray.o carray_wrap.o
+	$(CC) -o _carray.so carray.o carray_wrap.o $(SHARE) $(PY_CFLAGS) $(CFLAGS)
+
+carray.o : carray.cpp
+	$(CC) -c carray.cpp $(CFLAGS)
+
+carray_wrap.o : carray_wrap.cxx
+	$(CC) -c carray_wrap.cxx $(CFLAGS) $(PY_CFLAGS)
+
+carray_wrap.cxx : carray.i
+	$(SWIG) carray.i
+
+
+clean :
+	rm _swigDASpec.so $(objects) swigDASpec_wrap.cxx carray_wrap.cxx carray.o carray_wrap.o _carray.so
