@@ -23,7 +23,7 @@ objects = component.o function.o compcontainer.o curvefit.o swigDASpec_wrap.o
 default : _swigDASpec.so
 
 _swigDASpec.so : $(objects) common.h prototype.h DASpec.h
-	$(CC) -o swigDASpec.so $(objects) $(MPFIT) $(GSL) $(SHARE) $(PY_CFLAGS)
+	$(CC) -o _swigDASpec.so $(objects) $(MPFIT) $(GSL) $(SHARE) $(PY_CFLAGS) $(CFLAGS)
 
 component.o : component.cpp component.h prototype.h common.h function.h
 	$(CC) -c component.cpp $(CFLAGS)
