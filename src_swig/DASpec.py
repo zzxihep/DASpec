@@ -1189,7 +1189,7 @@ class ccm_reddening(object):
 
 def test():
 
-    import pyfits
+    from astropy.io import fits as pyfits
     from pyastrolib import astro
     import matplotlib.pyplot as plt
 
