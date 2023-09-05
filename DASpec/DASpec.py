@@ -10,9 +10,9 @@ import sys
 import numpy as np
 from scipy import optimize
 from PyAstronomy.pyasl import unred
-import carray
-import swigDASpec
-import dasreadspec
+from . import carray
+from . import swigDASpec
+from . import dasreadspec
 
 template_PATH = os.getenv("DASpec_TEMPLATE_PATH")
 
