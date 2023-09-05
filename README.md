@@ -17,14 +17,14 @@ Version: 0.0.1
 1. GSL
 2. swig
 3. cmpfit 
-(https://www.physics.wisc.edu/~craigm/idl/cmpfit.html)
+(https://www.physics.wisc.edu/~craigm/idl/cmpfit.html). `cmpfit` has been included in this package. You do not need to care about it now.
 
 For Mac users, you can install them with homebrew:
 ```shell
 brew install gsl
 brew install swig
 ```
-For Linux users, you can install them with apt-get:
+For Ubuntu or Debian users, you can install them with apt-get:
 ```shell
 sudo apt-get install libgsl-dev
 sudo apt-get install swig
