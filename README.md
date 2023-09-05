@@ -35,6 +35,22 @@ sudo pacman -S gsl
 sudo pacman -S swig
 ```
 
+### Install:
+You can install the package by using pip:
+```bash
+pip install git+https://github.com/zzxihep/DASpec.git
+```
+Some system may raise an error `error: externally-managed-environment`, you can try to add `--break-system-packages` to the command above.
+```bash
+pip install git+https://github.com/zzxihep/DASpec.git --break-system-packages
+```
+or clone the repository and install it:
+```bash
+git clone https://github.com/zzxihep/DASpec.git
+cd DASpec
+python setup.py install --user
+```
+
 <!-- ### Install:
 1. run "python setup.py build_ext --inplace"
 2. Add the path to your $PYTHONPATH
