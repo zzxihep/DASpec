@@ -19,6 +19,22 @@ Version: 0.0.1
 3. cmpfit 
 (https://www.physics.wisc.edu/~craigm/idl/cmpfit.html)
 
+For Mac users, you can install them with homebrew:
+```shell
+brew install gsl
+brew install swig
+```
+For Linux users, you can install them with apt-get:
+```shell
+sudo apt-get install libgsl-dev
+sudo apt-get install swig
+```
+For arch or manjaro users, you can install them with pacman:
+```shell
+sudo pacman -S gsl
+sudo pacman -S swig
+```
+
 <!-- ### Install:
 1. run "python setup.py build_ext --inplace"
 2. Add the path to your $PYTHONPATH
