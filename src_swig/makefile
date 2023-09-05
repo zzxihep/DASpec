@@ -59,4 +59,4 @@ carray_wrap.cxx : carray.i
 
 
 clean :
-	rm _swigDASpec.so $(objects) swigDASpec_wrap.cxx carray_wrap.cxx carray.o carray_wrap.o _carray.so
+	rm _swigDASpec.so $(objects) swigDASpec_wrap.cxx carray_wrap.cxx carray.o carray_wrap.o _carray.so swigDASpec.py carray.py
