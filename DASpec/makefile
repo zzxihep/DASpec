@@ -27,16 +27,16 @@ _swigDASpec.so : $(objects) common.h prototype.h DASpec.h
 	$(CC) -o _swigDASpec.so $(objects) $(MPFIT) $(GSL) $(SHARE) $(PY_CFLAGS) $(CFLAGS)
 
 component.o : component.cpp component.h prototype.h common.h function.h
-	$(CC) -c component.cpp $(CFLAGS)
+	$(CC) -c component.cpp $(CFLAGS) $(GSL)
 
 function.o : function.cpp function.h common.h
-	$(CC) -c function.cpp $(CFLAGS)
+	$(CC) -c function.cpp $(CFLAGS) $(GSL)
 
 compcontainer.o : compcontainer.cpp compcontainer.h common.h
-	$(CC) -c compcontainer.cpp $(CFLAGS)
+	$(CC) -c compcontainer.cpp $(CFLAGS) $(GSL)
 
 curvefit.o : curvefit.cpp curvefit.h common.h
-	$(CC) -c curvefit.cpp $(CFLAGS) $(MPFIT)
+	$(CC) -c curvefit.cpp $(CFLAGS) $(MPFIT) $(GSL)
 
 swigDASpec_wrap.o : swigDASpec_wrap.cxx
 	$(CC) -c swigDASpec_wrap.cxx $(CFLAGS) $(PY_CFLAGS) $(MPFIT)
